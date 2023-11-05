@@ -12,6 +12,13 @@ export const HomePage = () => {
     { name: "Beáta Skočdopolová", avatar: '/avatars/candidate03.png' },
     { name: "Lubomír Poňuchálek", avatar: '/avatars/candidate04.png' },
   ]), []);
+
+  const handleVote = (name) => {
+    if (window.confirm(`Opravdu chcete zvolit kandidáta ${name}?`)) {
+      setPresident(name);
+      // zde bychom mohli odeslat data na server
+    }
+  };
   
   return (
     <div className="container">
@@ -34,7 +41,7 @@ export const HomePage = () => {
             key={c.name}
             name={c.name} 
             avatar={c.avatar}
-            onVote={setPresident} 
+            onVote={handleVote} 
           />
         ))}
       </div>
