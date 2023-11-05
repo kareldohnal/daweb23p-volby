@@ -1,0 +1,8 @@
+.candidate-list {
+    display: flex;
+  }
+  
+  .candidate-list > * {
+    width: 25%;
+  }
+  

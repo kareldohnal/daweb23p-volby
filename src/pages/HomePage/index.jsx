@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Candidate } from '../../components/Candidate';
+import { CandidateList} from "../../components/CandidateList"
 import { Castle } from "../../components/Castle"
 import './style.css';
 
@@ -23,19 +23,9 @@ export const HomePage = () => {
   
   return (
     <div className="container">
-      <Castle president={president} />
-      
-      <h2>Kandidátí</h2>
-      <div className="candidate-list">
-        {candidates.map((c) => (
-          <Candidate
-            key={c.name}
-            name={c.name} 
-            avatar={c.avatar}
-            onVote={handleVote} 
-          />
-        ))}
-      </div>
-    </div>
+    <Castle president={president} />
+    <h2>Kandidátí</h2>
+    <CandidateList candidates={candidates} onVote={handleVote} />
+  </div>
   );
 };
