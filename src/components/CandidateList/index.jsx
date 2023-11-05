@@ -1,6 +1,7 @@
+import { Candidate } from "../Candidate";
 import "./style.css"
 
-const CandidateList = ({ candidates, onVote }) => {
+export const CandidateList = ({ candidates, onVote }) => {
     return (
       <div className="candidate-list">
         {candidates.map((c) => (
