@@ -30,10 +30,11 @@ export const HomePage = () => {
       <h2>Kandidátí</h2>
       <div className="candidate-list">
         {candidates.map((c) => (
-          <Candidate 
+          <Candidate
             key={c.name}
             name={c.name} 
-            avatar={c.avatar} 
+            avatar={c.avatar}
+            onVote={setPresident} 
           />
         ))}
       </div>
