@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Candidate } from '../../components/Candidate';
+import { CandidateList } from '../../components/CandidateList';
+import { Castle } from '../../components/Castle';
 import './style.css';
 
 export const HomePage = () => {
@@ -12,32 +13,18 @@ export const HomePage = () => {
     { name: "Beáta Skočdopolová", avatar: '/avatars/candidate03.png' },
     { name: "Lubomír Poňuchálek", avatar: '/avatars/candidate04.png' },
   ]), []);
+
+  const handleNewPresident = (vstup) => {
+    if (window.confirm(`Opravdu chcete zvolit kandidáta ${vstup}?`)) {
+      setPresident(vstup);
+    }
+  }
   
   return (
     <div className="container">
-      <div className="castle">
-        <div className="castle__image"></div>
-        <div className="castle__body">
-          <h1>Nový prezident</h1>
-          <p className="castle__president">
-            {
-              president === null ? 'Vyberte svého kandidáta' : president
-            }
-          </p>
-        </div>
-      </div>
-      
+      <Castle president={president} />
       <h2>Kandidátí</h2>
-      <div className="candidate-list">
-        {candidates.map((c) => (
-          <Candidate
-            key={c.name}
-            name={c.name} 
-            avatar={c.avatar}
-            onVote={setPresident} 
-          />
-        ))}
-      </div>
+      <CandidateList candidates={candidates} onVote={handleNewPresident} />
     </div>
   );
 };
